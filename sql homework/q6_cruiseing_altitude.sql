@@ -1,0 +1,1 @@
+with pid as (select person_id from people as p where p.name like '%Cruise%' and p.born = 1962), tid as (select title_id from crew where person_id in (select person_id from pid)) select primary_title, votes from titles as t join ratings as r on r.title_id = t.title_id where t.title_id in (select title_id from tid) order by votes desc limit 10;

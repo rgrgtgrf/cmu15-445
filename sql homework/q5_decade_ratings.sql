@@ -1,0 +1,1 @@
+select cast(t.premiered / 10 as int) * 10 || 's' as decade, round(AVG(r.rating), 2) as av, MAX(r.rating) as ma, MIN(r.rating) as mi, count(t.title_id) as num from titles as t join ratings as r on t.title_id = r.title_id where premiered is not null group by decade order by av desc, decade asc;
